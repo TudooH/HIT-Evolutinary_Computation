@@ -5,39 +5,28 @@ import numpy as np
 
 class Selection(metaclass=ABCMeta):
     @abstractmethod
-    def select(self):
+    def select(self, values, rate):
         pass
 
 
 class FitnessProportionateSelection(Selection):
-    def __init__(self, values, rate):
-        self.__values = values
-        self.__rate = rate
+    def select(self, values, rate):
+        values = np.array(values)
+        bias = values.mean() - 2 * values.std()
+        tmp = np.array([max(0, values[i] - bias) for i in range(len(values))])
+        values = tmp / sum(tmp)
 
-    def select(self):
-        bound = 0
-        np.random.seed(0)
-        p = np.empty(len(self.__values))
-        p2 = np.empty(len(self.__values))
-        for i in self.__values:
-            bound += i
-        for i in range(len(self.__values)):
-            p[i] = float(self.__values[i]) / float(bound)
-            p2[i] = i
-        winners = np.random.choice(a=p2, size=len(self.__values) * self.__rate, p=p.ravel())
+        tot = int(len(values) * rate)
+        winners = np.random.choice([i for i in range(len(values))], size=tot, p=values)
         return sorted(winners)
 
 
 class TournamentSelection(Selection):
-    def __init__(self, values, rate):
-        self.__values = values
-        self.__rate = rate
-
-    def select(self):
+    def select(self, values, rate):
         winners = []
-        while len(winners) < len(self.__values) * self.__rate:
-            x, y = random.sample(range(len(self.__values)), 2)
-            if self.__values[x] >= self.__values[y]:
+        while len(winners) < len(values) * rate:
+            x, y = random.sample(range(len(values)), 2)
+            if values[x] >= values[y]:
                 winners.append(x)
             else:
                 winners.append(y)
@@ -45,11 +34,8 @@ class TournamentSelection(Selection):
 
 
 class ElitismSelection(Selection):
-    def __init__(self, values, rate):
-        self.__values = {i: values[i] for i in range(len(values))}
-        self.__rate = rate
-
-    def select(self):
-        sorted_values = sorted(self.__values.items(), key=lambda x: (x[1], x[0]), reverse=True)
-        tot = int(len(self.__values) * self.__rate)
+    def select(self, values, rate):
+        values = {i: values[i] for i in range(len(values))}
+        sorted_values = sorted(values.items(), key=lambda x: (x[1], x[0]), reverse=True)
+        tot = int(len(values) * rate)
         return sorted([sorted_values[: tot][i][0] for i in range(tot)])
