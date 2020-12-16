@@ -8,6 +8,27 @@ class Selection(metaclass=ABCMeta):
         pass
 
 
+class FitnessProportionateSelection(Selection):
+    def __init__(self, values, rate):
+        self.__values = values
+        self.__rate = rate
+
+    def select(self):
+        winners = []
+        bound = 0
+        for i in self.__values:
+            bound += i
+        while len(winners) < len(self.__values) * self.__rate:
+            r = random.uniform(0, bound)
+            count = 0
+            for i in range(len(self.__values)):
+                count += self.__values[i]
+                if count > r:
+                    winners.append(i)
+                    break
+        return sorted(winners)
+
+
 class TournamentSelection(Selection):
     def __init__(self, values, rate):
         self.__values = values
