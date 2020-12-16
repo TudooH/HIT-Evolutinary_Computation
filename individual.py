@@ -3,15 +3,21 @@ import math
 
 
 class Individual:
-    def __init__(self, tsp):
+    def __init__(self, tsp, set_route=None):
         self.__name, self.__comment, self.__tsp_type, self.__num, self.__edge_type, self.__nodes = tsp.get_info()
 
-        route = [i for i in range(self.__num)]
-        random.shuffle(route)
-        self.__route = route
+        if set_route is not None:
+            self.__route = set_route
+        else:
+            route = [i for i in range(self.__num)]
+            random.shuffle(route)
+            self.__route = route
 
     def get_route(self):
         return self.__route[:]
+
+    def change_route(self, new_route):
+        self.__route = new_route
 
     def get_dis(self):
         route = self.__route[:]
