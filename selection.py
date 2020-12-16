@@ -1,5 +1,6 @@
 from abc import ABCMeta, abstractmethod
 import random
+import numpy as np
 
 
 class Selection(metaclass=ABCMeta):
@@ -14,18 +15,16 @@ class FitnessProportionateSelection(Selection):
         self.__rate = rate
 
     def select(self):
-        winners = []
         bound = 0
+        np.random.seed(0)
+        p = np.empty(len(self.__values))
+        p2 = np.empty(len(self.__values))
         for i in self.__values:
             bound += i
-        while len(winners) < len(self.__values) * self.__rate:
-            r = random.uniform(0, bound)
-            count = 0
-            for i in range(len(self.__values)):
-                count += self.__values[i]
-                if count > r:
-                    winners.append(i)
-                    break
+        for i in range(len(self.__values)):
+            p[i] = float(self.__values[i]) / float(bound)
+            p2[i] = i
+        winners = np.random.choice(a=p2, size=len(self.__values) * self.__rate, p=p.ravel())
         return sorted(winners)
 
 
