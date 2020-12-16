@@ -28,16 +28,13 @@ class Inversion(Mutation):
     def mutate(self, route):
         x, y = random.sample(range(len(route)), 2)
         x, y = min(x, y), max(x, y)
-        print(x, y)
         return [route[i] if i < x or i > y else route[x+y-i] for i in range(len(route))]
 
 
 class Scramble(Mutation):
-    def mutation(self, route):
+    def mutate(self, route):
         tot = random.randint(1, len(route))
         nums = random.sample(range(len(route)), tot)
         rand = nums[:]
         random.shuffle(rand)
-
-        print(tot, nums, rand)
         return [route[i] if route[i] not in nums else rand[nums.index(route[i])] for i in range(len(route))]

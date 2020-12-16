@@ -12,9 +12,7 @@ class Selection(metaclass=ABCMeta):
 class FitnessProportionateSelection(Selection):
     def select(self, values, rate):
         values = np.array(values)
-        bias = values.mean() - 2 * values.std()
-        tmp = np.array([max(0, values[i] - bias) for i in range(len(values))])
-        values = tmp / sum(tmp)
+        values = values / sum(values)
 
         tot = int(len(values) * rate)
         winners = np.random.choice([i for i in range(len(values))], size=tot, p=values)
