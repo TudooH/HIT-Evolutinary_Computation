@@ -4,12 +4,12 @@ from abc import ABCMeta, abstractmethod
 
 class Mutation(metaclass=ABCMeta):
     @abstractmethod
-    def mutation(self, route):
+    def mutate(self, route):
         pass
 
 
 class Insert(Mutation):
-    def mutation(self, route):
+    def mutate(self, route):
         x, y = random.sample(range(len(route)), 2)
         x, y = min(x, y), max(x, y)
         tmp = [route[i] if i <= x or i > y else route[i-1] for i in range(len(route))]
@@ -18,14 +18,14 @@ class Insert(Mutation):
 
 
 class Swap(Mutation):
-    def mutation(self, route):
+    def mutate(self, route):
         x, y = random.sample(range(len(route)), 2)
         route[x], route[y] = route[y], route[x]
         return route
 
 
 class Inversion(Mutation):
-    def mutation(self, route):
+    def mutate(self, route):
         x, y = random.sample(range(len(route)), 2)
         x, y = min(x, y), max(x, y)
         print(x, y)
