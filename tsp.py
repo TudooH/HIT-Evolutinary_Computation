@@ -14,7 +14,7 @@ class Tsp:
         self.__nodes = []
         for i in range(self.__num):
             nums = lines[i+6].split()
-            self.__nodes.append([int(nums[1]), int(nums[2])])
+            self.__nodes.append([float(nums[1]), float(nums[2])])
 
     def get_info(self):
         return self.__name, self.__comment, self.__type, self.__num, self.__edge_type, self.__nodes

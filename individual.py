@@ -4,7 +4,7 @@ import math
 
 class Individual:
     def __init__(self, tsp, set_route=None):
-        self.__name, self.__comment, self.__tsp_type, self.__num, self.__edge_type, self.__nodes = tsp.get_info()
+        _, _, _, self.__num, _, self.__nodes = tsp.get_info()
 
         if set_route is not None:
             self.__route = set_route[:]
