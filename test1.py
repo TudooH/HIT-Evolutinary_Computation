@@ -1,3 +1,5 @@
+import time
+
 from tsp import Tsp
 from selection import FitnessProportionateSelection, TournamentSelection, ElitismSelection
 from crossover import OrderCrossover, PMXCrossover, CycleCrossover
@@ -20,7 +22,9 @@ solutions = [[1, 1, 2], [1, 2, 2], [2, 1, 2]]
 for i, filename in enumerate(filenames):
     tsp = Tsp(filename)
     print(filename, ans[i])
-    with open('log/{}.txt'.format(filename), 'w') as f:
+    with open('log/test1/{}.txt'.format(filename), 'w') as f:
+        start = time.time()
+
         f.write('{}, {}\n\n'.format(filename, ans[i]))
         for size in sizes:
             for generation in generations:
@@ -50,3 +54,6 @@ for i, filename in enumerate(filenames):
                     for x in route:
                         f.write('{} '.format(x))
                     f.write('\n\n')
+
+        end = time.time()
+        f.write('time: {}'.format(end-start))

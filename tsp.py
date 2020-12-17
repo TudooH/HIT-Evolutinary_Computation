@@ -18,3 +18,6 @@ class Tsp:
 
     def get_info(self):
         return self.__name, self.__comment, self.__type, self.__num, self.__edge_type, self.__nodes
+
+    def get_nodes(self):
+        return self.__nodes[:]
