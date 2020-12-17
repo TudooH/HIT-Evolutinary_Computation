@@ -24,5 +24,5 @@ run analysis.py and visualize the output data in test1 and test2
 #### team members
 黄天毓 1183710112 1183710112@stu.hit.edu.cn<br>
 姜宇昊 1180300329 1180300329@stu.hit.edu.cn<br>
-谢希芝 1180300316 1180300316@stu.hit.edu.cn<br>
-何少玮 1180300306 1180300306@stu.hit.edu.cn<br>
+谢希芝 1180300316 838785447@qq.com<br>
+何少玮 1180300306 2321743666@qq.com<br>
