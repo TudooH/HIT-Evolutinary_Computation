@@ -3,7 +3,7 @@ test1.py: test three solutions, in size(10, 20, 50, 100), generation(5k, 10k, 20
 <br>
 test2.py: test our best solution, in size 50, generation 10k, ten TSPlib instances, output at /log/test2
 <br>
-analysis.py: visualize our output data, comparison of three different solutions' performances at /img/test1, route of our best solution at /img/test2
+analysis.py: visualize our log data, comparison of three different solutions' performances at /img/test1, route of our best solution at /img/test2
 <br>
 evolution.py: simulate a genetic algorithm processing
 <br>

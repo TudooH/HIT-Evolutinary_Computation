@@ -14,6 +14,8 @@ for dirname, _, filenames in os.walk('log/test1'):
             ans = int(f.readline().split(', ')[1])
             f.readline()
             for size in sizes:
+                if filename == 'pr2392.txt' and size in [50, 100]:
+                    continue
                 for generation in generations:
                     for solution in range(3):
                         f.readline()
