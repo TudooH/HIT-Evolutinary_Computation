@@ -11,6 +11,8 @@ evolution.py: simulate a genetic algorithm processing
 <br>
 tsp.py, individual.py, population.py, selection.py, crossover.py and mutation.py: designed as the assignment requires
 <br>
+Video link：https://www.bilibili.com/video/BV1va4y1H7aG
+<br>
 
 #### how to run
 run test1.py and start the experiment1 in exercise5
