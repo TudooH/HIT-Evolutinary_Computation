@@ -1,0 +1,10 @@
+data: eil101, ans: 629, result: 740.0234724174969
+data: eil51, ans: 426, result: 467.6681569182554
+data: eil76, ans: 538, result: 632.6863174525668
+data: kroA100, ans: 21282, result: 26081.98609850296
+data: kroC100, ans: 20749, result: 26314.333026918353
+data: kroD100, ans: 21294, result: 24050.814046779862
+data: lin105, ans: 14379, result: 18456.155231465622
+data: pcb442, ans: 50778, result: 196494.20335323972
+data: pr2392, ans: 378032, result: 7136247.425497412
+data: st70, ans: 675, result: 733.2462263190816
