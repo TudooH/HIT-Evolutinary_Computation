@@ -5,7 +5,7 @@ test2.py: test our best solution, in size 50, generation 10k, ten TSPlib instanc
 <br>
 analysis.py: visualize our log data, comparison of three different solutions' performances at /img/test1, route of our best solution at /img/test2
 <br>
-result.py: got result from log
+result.py: get result from log
 <br>
 evolution.py: simulate a genetic algorithm processing
 <br>
